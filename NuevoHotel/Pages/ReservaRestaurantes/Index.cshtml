@@ -1,0 +1,60 @@
+﻿@page
+@model NuevoHotel.Pages.ReservaRestaurantes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservaRestaurante[0].CodigoUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservaRestaurante[0].CodigoRestaurante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservaRestaurante[0].FechaReserva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservaRestaurante[0].HoraIngreso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservaRestaurante[0].EstadoReserva)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ReservaRestaurante) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoRestaurante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaReserva)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoReserva)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CodigoReservaRestaurante">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.CodigoReservaRestaurante">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CodigoReservaRestaurante">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

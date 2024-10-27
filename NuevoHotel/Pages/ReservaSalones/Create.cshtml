@@ -1,0 +1,59 @@
+﻿@page
+@model NuevoHotel.Pages.ReservaSalones.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>ReservaSalon</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ReservaSalon.CodigoUsuario" class="control-label"></label>
+                <input asp-for="ReservaSalon.CodigoUsuario" class="form-control" />
+                <span asp-validation-for="ReservaSalon.CodigoUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservaSalon.CodigoSalon" class="control-label"></label>
+                <input asp-for="ReservaSalon.CodigoSalon" class="form-control" />
+                <span asp-validation-for="ReservaSalon.CodigoSalon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservaSalon.FechaReserva" class="control-label"></label>
+                <input asp-for="ReservaSalon.FechaReserva" class="form-control" />
+                <span asp-validation-for="ReservaSalon.FechaReserva" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservaSalon.HoraIngreso" class="control-label"></label>
+                <input asp-for="ReservaSalon.HoraIngreso" class="form-control" />
+                <span asp-validation-for="ReservaSalon.HoraIngreso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservaSalon.HoraSalida" class="control-label"></label>
+                <input asp-for="ReservaSalon.HoraSalida" class="form-control" />
+                <span asp-validation-for="ReservaSalon.HoraSalida" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservaSalon.EstadoReserva" class="control-label"></label>
+                <input asp-for="ReservaSalon.EstadoReserva" class="form-control" />
+                <span asp-validation-for="ReservaSalon.EstadoReserva" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -11,6 +11,6 @@ namespace NuevoHotel.Models
         public decimal PrecioDia { get; set; }
         public string Estado { get; set; }
 
-        public ICollection<Reserva> Habitaciones { get; set; }
+        public ICollection<ReservaHabitacion> Habitaciones { get; set; }
     }
 }

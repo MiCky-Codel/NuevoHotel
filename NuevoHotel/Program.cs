@@ -1,7 +1,12 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using NuevoHotel.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<NuevoHotelContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("NuevoHotelContext") ?? throw new InvalidOperationException("Connection string 'NuevoHotelContext' not found.")));
 
 var app = builder.Build();
 

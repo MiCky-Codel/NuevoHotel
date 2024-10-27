@@ -1,0 +1,50 @@
+﻿@page
+@model NuevoHotel.Pages.Habitaciones.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Habitacion</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Habitacion.CodigoHabitacion" />
+            <div class="form-group">
+                <label asp-for="Habitacion.NumeroHabitacion" class="control-label"></label>
+                <input asp-for="Habitacion.NumeroHabitacion" class="form-control" />
+                <span asp-validation-for="Habitacion.NumeroHabitacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Habitacion.Capacidad" class="control-label"></label>
+                <input asp-for="Habitacion.Capacidad" class="form-control" />
+                <span asp-validation-for="Habitacion.Capacidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Habitacion.PrecioDia" class="control-label"></label>
+                <input asp-for="Habitacion.PrecioDia" class="form-control" />
+                <span asp-validation-for="Habitacion.PrecioDia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Habitacion.Estado" class="control-label"></label>
+                <input asp-for="Habitacion.Estado" class="form-control" />
+                <span asp-validation-for="Habitacion.Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

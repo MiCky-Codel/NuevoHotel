@@ -1,0 +1,55 @@
+﻿@page
+@model NuevoHotel.Pages.ReservaHabitaciones.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ReservaHabitacion</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ReservaHabitacion.CodigoReserva" />
+            <div class="form-group">
+                <label asp-for="ReservaHabitacion.CodigoHabitacion" class="control-label"></label>
+                <input asp-for="ReservaHabitacion.CodigoHabitacion" class="form-control" />
+                <span asp-validation-for="ReservaHabitacion.CodigoHabitacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservaHabitacion.CodigoUsuario" class="control-label"></label>
+                <input asp-for="ReservaHabitacion.CodigoUsuario" class="form-control" />
+                <span asp-validation-for="ReservaHabitacion.CodigoUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservaHabitacion.FechaIngreso" class="control-label"></label>
+                <input asp-for="ReservaHabitacion.FechaIngreso" class="form-control" />
+                <span asp-validation-for="ReservaHabitacion.FechaIngreso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservaHabitacion.FechaSalida" class="control-label"></label>
+                <input asp-for="ReservaHabitacion.FechaSalida" class="form-control" />
+                <span asp-validation-for="ReservaHabitacion.FechaSalida" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservaHabitacion.EstadoReserva" class="control-label"></label>
+                <input asp-for="ReservaHabitacion.EstadoReserva" class="form-control" />
+                <span asp-validation-for="ReservaHabitacion.EstadoReserva" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
