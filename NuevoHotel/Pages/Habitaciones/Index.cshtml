@@ -43,6 +43,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Estado)
             </td>
+            <tb>
+                <img asp-append-version="true" src="~/img/habitaciones/@item.HabitacionImg" alt="Alternative" width="64"/>
+            </tb>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.CodigoHabitacion">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.CodigoHabitacion">Details</a> |

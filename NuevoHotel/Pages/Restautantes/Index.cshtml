@@ -38,6 +38,9 @@
                 @Html.DisplayFor(modelItem => item.Capacidad)
             </td>
             <td>
+                <img asp-append-version="true" src="~/img/Restautantees/@item.RestautanteImg" alt="Alternate Text" width="64" />
+            </td>
+            <td>
                 <a asp-page="./Edit" asp-route-id="@item.CodigoRestaurante">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.CodigoRestaurante">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.CodigoRestaurante">Delete</a>

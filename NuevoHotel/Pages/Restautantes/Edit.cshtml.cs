@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -14,10 +15,14 @@ namespace NuevoHotel.Pages.Restautantes
     public class EditModel : PageModel
     {
         private readonly NuevoHotel.Data.NuevoHotelContext _context;
+        private readonly IWebHostEnvironment _environment;
+        [BindProperty, Display(Name = "imagen del restaurante")]
+        public IFormFile? RestauranteImg {  get; set; }
 
-        public EditModel(NuevoHotel.Data.NuevoHotelContext context)
+        public EditModel(NuevoHotel.Data.NuevoHotelContext context, IWebHostEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
         [BindProperty]
@@ -43,9 +48,22 @@ namespace NuevoHotel.Pages.Restautantes
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            if (Restaurante.RestautanteImg == null)
+            {
+                ModelState.Remove("Restautate.RestaurateImg");
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
+            }
+
+            if (this.RestauranteImg != null)
+            {
+                Restaurante.RestautanteImg = RestauranteImg.FileName;
+                var imgFile = Path.Combine(_environment.WebRootPath, "img", "productos", RestauranteImg.FileName);
+                using var fileStream = new FileStream(imgFile, FileMode.Create);
+                await RestauranteImg.CopyToAsync(fileStream);
             }
 
             _context.Attach(Restaurante).State = EntityState.Modified;
