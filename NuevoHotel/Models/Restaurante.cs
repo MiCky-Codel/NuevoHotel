@@ -10,6 +10,7 @@ namespace NuevoHotel.Models
         public string Ubicacion { get; set; }
         public int Capacidad { get; set; }
 
+        public string RestautanteImg { get; set; }
         public ICollection<ReservaRestaurante> reservarestaurantes { get; set; }
     }
 }

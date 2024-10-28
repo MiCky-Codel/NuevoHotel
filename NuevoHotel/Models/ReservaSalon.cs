@@ -13,6 +13,8 @@ namespace NuevoHotel.Models
         public TimeSpan HoraSalida { get; set; }
         public string EstadoReserva { get; set; }
 
+        public string ResSalImg { get; set; }
+
         public Salon Salon { get; set; }
     }
 }

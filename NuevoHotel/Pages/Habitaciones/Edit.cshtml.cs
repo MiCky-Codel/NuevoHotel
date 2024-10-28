@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -14,10 +15,14 @@ namespace NuevoHotel.Pages.Habitaciones
     public class EditModel : PageModel
     {
         private readonly NuevoHotel.Data.NuevoHotelContext _context;
+        private readonly IWebHostEnvironment _environment;
+        [BindProperty, Display(Name = "imagen de la Habitacion")]
+        public IFormFile? HabitacionImg { get; set; }
 
-        public EditModel(NuevoHotel.Data.NuevoHotelContext context)
+        public EditModel(NuevoHotel.Data.NuevoHotelContext context, IWebHostEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
         [BindProperty]
@@ -30,7 +35,7 @@ namespace NuevoHotel.Pages.Habitaciones
                 return NotFound();
             }
 
-            var habitacion =  await _context.Habitacion.FirstOrDefaultAsync(m => m.CodigoHabitacion == id);
+            var habitacion = await _context.Habitacion.FirstOrDefaultAsync(m => m.CodigoHabitacion == id);
             if (habitacion == null)
             {
                 return NotFound();
@@ -43,11 +48,22 @@ namespace NuevoHotel.Pages.Habitaciones
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            if (Habitacion.HabitacionImg == null)
+            {
+                ModelState.Remove("Habitacion.HabitacionImg");
+            }
             if (!ModelState.IsValid)
             {
                 return Page();
             }
+            if (this.HabitacionImg != null)
+            {
+                Habitacion.HabitacionImg = HabitacionImg.FileName;
+                var imgFile = Path.Combine(_environment.WebRootPath, "Img", "Habitacion", HabitacionImg.FileName);
+                using var fileStream = new FileStream(imgFile, FileMode.Create);
+                await HabitacionImg.CopyToAsync(fileStream);
 
+            }
             _context.Attach(Habitacion).State = EntityState.Modified;
 
             try

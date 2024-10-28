@@ -12,6 +12,8 @@ namespace NuevoHotel.Models
         public DateTime FechaSalida { get; set; }
         public string EstadoReserva { get; set; }
 
+        public string ReservaHaImg { get; set; }
+
         public Habitacion Habitacion { get; set; }
     }
 }

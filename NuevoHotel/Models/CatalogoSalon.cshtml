@@ -1,0 +1,35 @@
+﻿@page
+@model NuevoHotel.Models.CatalogoSalonModel
+
+@{
+    ViewData["Title"] = "CatalogoSalon";
+}
+
+<h1>CatalogoSalon</h1>
+<hr class="m-5"/>
+<div class="row row-cols-1 row-cols-3 g-4">
+    @foreach (var item in Model.Salon)
+    {
+        <div class="col">
+            <div class="card">
+
+                <div class="card-body">
+                    <h5>@item.NombreSalon</h5>
+                    <p> Detalles </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Precio: @item.PrecioHora.ToString("C")</li>
+                    <li class="list-group-item">Quedan @item.PrecioHora</li>
+                    <li class="list-group-item">Categoria: @item.PrecioHora</li>
+                </ul>
+                <div class="card-footer">
+                    <a href="#" class="card-link">Alquilar</a>
+                    <a href="#" class="card-link">Reservar</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+

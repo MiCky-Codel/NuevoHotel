@@ -37,6 +37,10 @@ namespace NuevoHotel.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("HabitacionImg")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("NumeroHabitacion")
                         .HasColumnType("int");
 
@@ -75,6 +79,10 @@ namespace NuevoHotel.Migrations
                     b.Property<int>("HabitacionCodigoHabitacion")
                         .HasColumnType("int");
 
+                    b.Property<string>("ReservaHaImg")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("CodigoReserva");
 
                     b.HasIndex("HabitacionCodigoHabitacion");
@@ -105,6 +113,10 @@ namespace NuevoHotel.Migrations
 
                     b.Property<TimeSpan>("HoraIngreso")
                         .HasColumnType("time(6)");
+
+                    b.Property<string>("ResRestImg")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<int>("RestauranteCodigoRestaurante")
                         .HasColumnType("int");
@@ -143,6 +155,10 @@ namespace NuevoHotel.Migrations
                     b.Property<TimeSpan>("HoraSalida")
                         .HasColumnType("time(6)");
 
+                    b.Property<string>("ResSalImg")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("SalonCodigoSalon")
                         .HasColumnType("int");
 
@@ -165,6 +181,10 @@ namespace NuevoHotel.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("RestautanteImg")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -198,6 +218,10 @@ namespace NuevoHotel.Migrations
 
                     b.Property<decimal>("PrecioHora")
                         .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("SalonImg")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("CodigoSalon");
 

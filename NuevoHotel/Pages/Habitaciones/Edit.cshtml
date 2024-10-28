@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Habitacion.CodigoHabitacion" />
             <div class="form-group">
@@ -35,6 +35,13 @@
                 <span asp-validation-for="Habitacion.Estado" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <img asp-append-version="true" src="~/img/camisas/@Model.Habitacion.HabitacionImg" alt="Alternate Text" width="70" />
+                <br />
+                <label asp-for="HabitacionImg" class="control-label"></label>
+                <input asp-for="HabitacionImg" class="form-control" />
+                <span asp-validation-for="HabitacionImg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -46,5 +53,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
